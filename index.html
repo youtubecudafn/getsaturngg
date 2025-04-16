@@ -1,256 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vortex Executor</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #151515;
-      color: #fff;
-      overflow-x: hidden;
-      opacity: 0;
-      animation: fadeIn 1s forwards;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #444;
-      opacity: 0;
-      animation: slideIn 1s forwards 0.5s;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #e0e0e0;
-    }
-
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    nav a:hover {
-      color: #a0a0a0;
-      transform: translateY(-5px);
-    }
-
-    .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-      background: #151515;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      animation: fadeIn 2s forwards 0.3s;
-    }
-
-    .hero-content {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      max-width: 1200px;
-      align-items: center;
-      opacity: 0;
-      animation: slideInLeft 1s forwards 1s;
-    }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    .hero-content .description {
-      max-width: 50%;
-      text-align: left;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin: 0;
-      color: #e0e0e0;
-      opacity: 0;
-      animation: fadeInText 2s forwards 1.5s;
-    }
-
-    @keyframes fadeInText {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero p {
-      margin: 1rem 0;
-      font-size: 1.2rem;
-      color: #a0a0a0;
-      opacity: 0;
-      animation: fadeInText 2s forwards 2s;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      color: #a0a0a0;
-      background: #1a1a1a;
-      height: 30px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
-
-    .btn:hover {
-      background: #202020;
-      color: #e0e0e0;
-      transform: translateY(-3px);
-    }
-
-    .btn:active {
-      background: #1a1a1a;
-      color: #a0a0a0;
-    }
-
-    .btn:focus {
-      outline: none;
-    }
-
-    .ui-preview-container {
-      perspective: 1000px;
-      max-width: 600px;
-      height: auto;
-    }
-
-    .ui-preview {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      transform-origin: center;
-      transform: perspective(1000px) rotateX(var(--rotate-x, 0)) rotateY(var(--rotate-y, 0)) scale(1.05);
-      transition: transform 0.3s ease-out;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      background: rgba(0, 0, 0, 0.8);
-      font-size: 0.9rem;
-      color: #a0a0a0;
-      border-top: 1px solid #444;
-      opacity: 0;
-      animation: fadeIn 1s forwards 2s;
-    }
-
-    footer a {
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    footer a:hover {
-      color: #6c5ce7;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturn.gg</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/youtubecudafn/SaturnSetup/refs/heads/main/image.psd(3)(1)(1).png">
+    <meta content="Saturn.gg" property="og:title" />
+    <meta content="The Most Advanced Roblox Executor" property="og:description" />
+    <meta content="https://raw.githubusercontent.com/youtubecudafn/SaturnSetup/refs/heads/main/image.psd(3)(1)(1).png" property="og:image" />
+    <meta content="#4d9fff" data-react-helmet="true" name="theme-color" />
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header>
-    <div class="logo">Vortex Softworks</div>
-    <nav>
-      <a href="#download">Download</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <div class="description">
-        <h1>Script Vortex Executor</h1>
-        <p>Byfron bypassing Executor using bytecode injection. 80% UNC</p>
-        <a href="https://lootdest.org/s?xcnw2CYs" class="btn">Download Now</a>
-      </div>
-      <div class="ui-preview-container" onmousemove="updateTilt(event)" onmouseleave="resetTilt()">
-        <img src="Prevv.png" alt="UI Preview" class="ui-preview">
-      </div>
+    <div class="background-effects">
+        <div class="grid-lines"></div>
+        <div class="glow-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Vortex Executor. All rights reserved.</p>
-  </footer>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="https://raw.githubusercontent.com/youtubecudafn/SaturnSetup/refs/heads/main/image.psd(3)(1)(1).png" alt="Saturn.gg Logo" class="brand-logo">
+                <span class="brand-text">Saturn.gg - The ultamate roblox executor</span>
+            </div>
 
-  <script>
-    function updateTilt(event) {
-      const container = event.currentTarget;
-      const rect = container.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+            <div class="nav-menu">
+                <a href="#features" class="nav-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Features</span>
+                </a>
+                <a href="#showcase" class="nav-item">
+                    <i class="fas fa-tv"></i>
+                    <span>Showcase</span>
+                </a>
+                <a href="#pricing" class="nav-item scroll-to-pricing">
+                    <i class="fas fa-tags"></i>
+                    <span>Pricing</span>
+                </a>
+                <a href="#faq" class="nav-item">
+                    <i class="fas fa-circle-question"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+            <div class="nav-actions">
+                <a href="https://discord.gg/saturngg" class="btn-discord">
+                    <i class="fab fa-discord"></i>
+                    <span>Join Discord</span>
+                </a>
+            </div>
+        </div>
+    </nav>
 
-      const rotateX = ((y - centerY) / centerY) * 10;
-      const rotateY = ((x - centerX) / centerX) * -10;
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="badge-glow"></div>
+                    <span class="badge-icon">🪐</span>
+                    <span class="badge-text">Most Advanced Executor</span>
+                </div>
+                <h1 class="hero-title">
+                    Next Generation
+                    <div class="gradient-text">Script Execution</div>
+                </h1>
+                <p class="hero-description">
+                    Experience unmatched power and precision with Saturn.gg's cutting-edge Roblox executor. Instant execution, unlimited possibilities.
+                </p>
+                <div class="hero-actions">
+                    <button onclick="window.location.href='https://github.com/youtubecudafn/SaturnSetup/raw/refs/heads/main/SaturnStrapper.zip';" class="btn-primary">
+                        <span>Download</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn-outline scroll-to-showcase">
+                        <i class="fas fa-play"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-bolt stat-icon"></i>
+                        <div class="stat-value">5,259,486,720</div>
+                        <div class="stat-label">Execution Time (ms)</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-preview">
+                    <div class="preview-header">
+                        <div class="window-controls">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="preview-tabs">
+                            <div class="tab active">main.lua</div>
+                        </div>
+                    </div>
+                    <div class="preview-editor">
+                        <div class="line-numbers">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                        </div>
+                        <pre class="code-content"><code>-- Initialize Saturn.gg
+local Saturn.gg = require("Saturn.gg")
 
-      container.querySelector('.ui-preview').style.setProperty('--rotate-x', `${rotateX}deg`);
-      container.querySelector('.ui-preview').style.setProperty('--rotate-y', `${rotateY}deg`);
-    }
+-- Configure settings
+Saturn.gg.config({
+    bypass = "hyperion"
+})
 
-    function resetTilt() {
-      const preview = document.querySelector('.ui-preview');
-      preview.style.setProperty('--rotate-x', '0deg');
-      preview.style.setProperty('--rotate-y', '0deg');
-    }
-  </script>
+-- Credits
+CudaFn, TheBestDragon, Djatlasv, and NovaLxst</code></pre>
+                    </div>
+                    <div class="preview-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-v2" id="features">
+        <div class="section-header">
+            <h2>Features</h2>
+            <p>Experience the power of Saturn.gg</p>
+        </div>
+        <div class="features-v2-grid">
+            <div class="feature-v2-card">
+                <div class="feature-v2-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Execution</h3>
+                <p>Execute any script instantly with our optimized engine</p>
+            </div>
+            <div class="feature-v2-card">
+                <div class="feature-v2-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Stable & Reliable</h3>
+                <p>Built for performance and stability across all games</p>
+            </div>
+            <div class="feature-v2-card">
+                <div class="feature-v2-icon">
+                    <i class="fas fa-sync"></i>
+                </div>
+                <h3>Auto Updates</h3>
+                <p>Stay up to date with automatic updates and patches</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase" id="Executor Interface Preview">
+        <div class="section-header">
+            <h2>Showcase</h2>
+            <p>See how Saturn.gg looks!</p>
+        </div>
+        <div class="showcase-content">
+            <div class="video-container">
+                <iframe src="https://github.com/THEBWARE/Saturngg/releases/download/Trailers/v1.0.9.trailer.mp4" title="Saturn.gg Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="purchase" id="pricing">
+        <div class="section-header">
+            <h2>Choose Your Plan</h2>
+            <p>Select the perfect plan for you</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Standard</h3>
+                    <div class="price">
+                        <span class="amount">$6.99</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Full Access</li>
+                        <li><i class="fas fa-check"></i> No Key System</li>
+                        <li><i class="fas fa-check"></i> Full Support</li>
+                    </ul>
+                    <a href="https://ecstxsy.sell.app/product/Saturn.gg-monthly" class="btn-primary">Buy Now! (Soon)</a>
+                </div>
+            </div>
+            <div class="pricing-card featured">
+                <div class="card-header">
+                    <span class="badge">The Best</span>
+                    <h3>Premium</h3>
+                    <div class="price">
+                        <span class="amount">$15.99</span>
+                        <span class="period">/3 months</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Full Access</li>
+                        <li><i class="fas fa-check"></i> No Key System</li>
+                        <li><i class="fas fa-check"></i> Full Support</li>
+                    </ul>
+                    <a href="https://ecstxsy.sell.app/product/Saturn.gg-3months" class="btn-primary">Buy Now! (Soon)</a>
+                </div>
+            </div>
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Personal</h3>
+                    <div class="price">
+                        <span class="amount">Free</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Partial Access</li>
+                        <li><i class="fas fa-check"></i> Authenticator System</li>
+                        <li><i class="fas fa-check"></i> Basic Support</li>
+                    </ul>
+                    <a href="https://github.com/youtubecudafn/SaturnSetup/raw/refs/heads/main/SaturnStrapper.zip" class="btn-outline">Download Now!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <h2>Reviews</h2>
+            <p>What our users say about Saturn.gg</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-content">
+                    <p>"Best executor I've used for Blox Fruits. Scripts load instantly and never crash."</p>
+                </div>
+                <div class="review-author">
+                    <span>- moonifxed</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-content">
+                    <p>"Been using it for Pet Simulator X, works flawlessly. I recommend!"</p>
+                </div>
+                <div class="review-author">
+                    <span>- beggar089</span>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-content">
+                    <p>"Perfect for Arsenal. Clean UI and super stable compared to others."</p>
+                </div>
+                <div class="review-author">
+                    <span>- ArsenalKing101</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <h2>FAQ</h2>
+            <p>Frequently Asked Questions</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Do you offer support?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we provide almost 24/7 support through our Discord community.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Is it safe to use?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Saturn.gg is designed with security in mind and regularly updated to ensure safety. Anti-virus may flag it.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>How do I get started?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>click the download button above or below to download Saturn.gg, if you have any issues/questions join the discord.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What games are supported?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Saturn.gg supports all major Roblox games with regular updates for new releases.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What is Saturn.gg?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Saturn.gg is a powerful script executor designed for optimal performance and reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="brand-icon">
+                    <img src="https://raw.githubusercontent.com/youtubecudafn/SaturnSetup/refs/heads/main/image.psd(3)(1)(1).png" alt="Saturn.gg Logo" class="footer-logo">
+                </div>
+                <h3>Saturn.gg</h3>
+                <p>Next generation Roblox script executor</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#showcase">Showcase</a>
+                    <a href="#pricing" class="scroll-to-pricing">Pricing</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#faq">FAQ</a>
+                    <a href="https://discord.gg/saturngg">Discord</a>
+                </div>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://discord.gg/saturngg" class="social-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 Saturn.gg. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
